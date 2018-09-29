@@ -1,0 +1,28 @@
+{
+  "id": "29071704-f5d6-4d74-af36-a0f58255e259",
+  "name": "Listar Empresas",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538215002,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "39739d00-f7c3-42d2-ab2e-1c58d3d5a5b5",
+    "data": [
+      {
+        "text": "ayuda",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538242651
+  },
+  {
+    "id": "84d5efd3-cb40-4958-aab7-c0bc30c01eb0",
+    "data": [
+      {
+        "text": "/help",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538242387
+  }
+]

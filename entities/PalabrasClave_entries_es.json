@@ -1,0 +1,80 @@
+[
+  {
+    "value": "Web",
+    "synonyms": [
+      "Web"
+    ]
+  },
+  {
+    "value": "clave",
+    "synonyms": [
+      "clave"
+    ]
+  },
+  {
+    "value": "Android",
+    "synonyms": [
+      "Android"
+    ]
+  },
+  {
+    "value": "Java",
+    "synonyms": [
+      "Java"
+    ]
+  },
+  {
+    "value": "Python",
+    "synonyms": [
+      "Python"
+    ]
+  },
+  {
+    "value": "Kotlin",
+    "synonyms": [
+      "Kotlin"
+    ]
+  },
+  {
+    "value": "Ingles",
+    "synonyms": [
+      "Ingles"
+    ]
+  },
+  {
+    "value": "Frances",
+    "synonyms": [
+      "Frances"
+    ]
+  },
+  {
+    "value": "Django",
+    "synonyms": [
+      "Django"
+    ]
+  },
+  {
+    "value": "Teleoperador",
+    "synonyms": [
+      "Teleoperador"
+    ]
+  },
+  {
+    "value": "Frontend",
+    "synonyms": [
+      "Frontend"
+    ]
+  },
+  {
+    "value": "Backend",
+    "synonyms": [
+      "Backend"
+    ]
+  },
+  {
+    "value": "html",
+    "synonyms": [
+      "html"
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "id": "08c08a5c-1883-49e6-8146-743ea4b0e74c",
+  "name": "Crear oferta",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "Crearoferta-followup",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "id": "89144326-efc5-4daa-a37a-6dd7b27d662d",
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "description",
+          "value": "$description",
+          "prompts": [
+            {
+              "lang": "es",
+              "value": "Dame una descripción para tu oferta:"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": "Dame las palabras clave de tu oferta"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538257288,
+  "fallbackIntent": false,
+  "events": []
+}

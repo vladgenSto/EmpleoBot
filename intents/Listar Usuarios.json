@@ -1,0 +1,28 @@
+{
+  "id": "21caa723-ebeb-4991-aa1d-4b88357b27e7",
+  "name": "Listar Usuarios",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538215064,
+  "fallbackIntent": false,
+  "events": []
+}

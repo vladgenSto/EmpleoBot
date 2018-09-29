@@ -99,7 +99,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                          ],
                      [{
                          "text": "🔍Ofertas por palabras clave",
-                         "callback_data": "Palabras clave"
+                         "callback_data": "Dame una palabra clave"
                      }
                      ]]
                    }
@@ -113,7 +113,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
             snapshot.forEach(function(data){
                 var name = data.val().Nombre;
                 agent.add(new Card({
-                    'title':'Eligeme',
+                    'title':'🙌Eligeme',
                     'buttonText': name,
                     'buttonUrl': name
                 }));
@@ -125,6 +125,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
    }
    
    function ofertasPorEmpresa(agent){
+       agent.add('Elige una empresa');
       var empresa = agent.parameters['Empresa'];
       
        return firebase.database().ref('Ofertas').once('value').then(function(snapshot) {
@@ -135,8 +136,31 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                     agent.add(new Card({
                     'title': emp,
                     'text': des,
-                    'buttonText': 'Me interesa',
-                    'buttonUrl': 'Inscribir'
+                    'buttonText': '😋Me interesa',
+                    'buttonUrl': 'Inscribir '+des
+                }));    
+                }
+                
+                 
+            });
+            
+        });
+   }
+   
+   function ofertasPorPalabrasClave(agent){
+      var palabra = agent.parameters['PalabrasClave'];
+      
+       return firebase.database().ref('Ofertas').once('value').then(function(snapshot) {
+            snapshot.forEach(function(data){
+                var emp = data.val().Empresa;
+                var des = data.val().Descripcion;
+                var claves = data.val().Palabras_clave;
+                if(claves.toLowerCase().indexOf(palabra.toLowerCase()) != -1){
+                    agent.add(new Card({
+                    'title': emp,
+                    'text': des,
+                    'buttonText': '😋Me interesa',
+                    'buttonUrl': 'Inscribir '+des
                 }));    
                 }
                 
@@ -176,8 +200,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                 agent.add(new Card({
                     'title': emp,
                     'text': des,
-                    'buttonText': 'Me interesa',
-                    'buttonUrl': 'Inscribir'
+                    'buttonText': '😋Me interesa',
+                    'buttonUrl': 'Inscribir '+des
                 }));
                  
             });
@@ -199,6 +223,27 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
             });
             
         });
+   }
+   
+   function crearOferta(agent){
+       //var nombre = request.body.message.chat.first_name;
+       var nombre = 'Cuatroochenta - 480';
+       var descripcion = agent.getContext('crearoferta-followup')['parameters']['description'];
+       var palabras_clave = agent.parameters['keywords'];
+       var dbRef=firebase.database().ref('ofertas');
+       return dbRef.once('value').then(function(snapshot){
+           var id = Object.keys(snapshot).length;
+           firebase.database().ref('Ofertas/' + 'o'+(id+1)).set({
+           'Empresa': nombre,
+           'Descripcion': descripcion,
+           'Palabras_clave': palabras_clave
+            });
+            agent.add('Tu oferta se ha creado con exito!');
+            
+            
+       });
+       
+       
    }
  //------------------------------------------------------------------------------------
  
@@ -400,6 +445,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Ofertas',ofertas);
   intentMap.set('Botones empresas',botonesEmpresas);
   intentMap.set('Ofertas Empresas',ofertasPorEmpresa);
+  intentMap.set('Oferas Palabras Clave',ofertasPorPalabrasClave);
+  intentMap.set('Crear oferta - getDescription', crearOferta);
   // intentMap.set('your intent name here', yourFunctionHandler);
   // intentMap.set('your intent name here', googleAssistantHandler);
   agent.handleRequest(intentMap);

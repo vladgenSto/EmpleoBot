@@ -1,0 +1,48 @@
+{
+  "id": "7110abd6-3645-4666-8f9e-c1850bb02649",
+  "parentId": "08c08a5c-1883-49e6-8146-743ea4b0e74c",
+  "rootParentId": "08c08a5c-1883-49e6-8146-743ea4b0e74c",
+  "name": "Crear oferta - getDescription",
+  "auto": true,
+  "contexts": [
+    "Crearoferta-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "Crearoferta.Crearoferta-custom",
+      "affectedContexts": [
+        {
+          "name": "Crearoferta-getDescription-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "ea902e9d-03b8-4fe7-93f0-26754f0e1d16",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "keywords",
+          "value": "$keywords",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "lastUpdate": 1538256940,
+  "fallbackIntent": false,
+  "events": []
+}

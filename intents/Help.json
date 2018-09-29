@@ -1,0 +1,28 @@
+{
+  "id": "c8f9baa8-6eb9-4b5d-a211-fe63e736608a",
+  "name": "Help",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": "/start - Inicia el bot\n/help - Menú de ayuda\n/oferta - Menú de ofertas"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538242651,
+  "fallbackIntent": false,
+  "events": []
+}

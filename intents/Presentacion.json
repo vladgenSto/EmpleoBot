@@ -1,0 +1,42 @@
+{
+  "id": "555f2633-a8c8-4257-8971-10512f78e203",
+  "name": "Presentacion",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "b7e4fd4d-4bb2-4ea0-bc7f-767b07793c0a",
+          "required": false,
+          "dataType": "@Presentacion",
+          "name": "presentacion",
+          "value": "$presentacion",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": "Hola que tal? como estas?"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538136899,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ]
+}

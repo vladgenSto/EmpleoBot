@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c33d5e8c-44a8-497a-a8b6-9161d5c78e8d",
+    "data": [
+      {
+        "text": "Nayar Systems",
+        "alias": "Empresa",
+        "meta": "@Empresa",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538236302
+  },
+  {
+    "id": "2a8b8ef6-5e60-4d61-aeb9-9a7983408d91",
+    "data": [
+      {
+        "text": "empresa",
+        "alias": "Empresa",
+        "meta": "@Empresa",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538229170
+  }
+]

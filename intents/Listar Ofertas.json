@@ -1,0 +1,28 @@
+{
+  "id": "e5def7e7-9024-43b7-8398-201b8fb3a2bf",
+  "name": "Listar Ofertas",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538233075,
+  "fallbackIntent": false,
+  "events": []
+}

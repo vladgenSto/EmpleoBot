@@ -1,0 +1,37 @@
+{
+  "id": "5071e5a4-d991-4005-85e5-318b47de1988",
+  "name": "Ofertas Empresas",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "fd46b701-bb4a-4aa0-b192-53e001399874",
+          "required": false,
+          "dataType": "@Empresa",
+          "name": "Empresa",
+          "value": "$Empresa",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "lastUpdate": 1538237801,
+  "fallbackIntent": false,
+  "events": []
+}

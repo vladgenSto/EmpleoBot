@@ -1,0 +1,37 @@
+{
+  "id": "438f0b04-944f-4413-956a-e69d7bbcfef7",
+  "name": "Realizar Solicitud Empresa",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "00bb8774-b6d2-4c7e-806e-a9137d0c7e53",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": "Inscrito"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538221530,
+  "fallbackIntent": false,
+  "events": []
+}

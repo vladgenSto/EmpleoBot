@@ -1,0 +1,47 @@
+[
+  {
+    "id": "bc5a3949-1c3c-4e6e-8e34-516599f1fbe1",
+    "data": [
+      {
+        "text": "Dame ",
+        "userDefined": false
+      },
+      {
+        "text": "una",
+        "alias": "time",
+        "meta": "@sys.time",
+        "userDefined": false
+      },
+      {
+        "text": " palabra ",
+        "userDefined": false
+      },
+      {
+        "text": "clave",
+        "alias": "PalabrasClave",
+        "meta": "@PalabrasClave",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538239295
+  },
+  {
+    "id": "3c4ca560-deb9-471b-b72a-3b9ccfb9bd96",
+    "data": [
+      {
+        "text": "palabras ",
+        "userDefined": false
+      },
+      {
+        "text": "clave",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1,
+    "updated": 1538238428
+  }
+]

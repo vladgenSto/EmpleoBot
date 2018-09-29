@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cb921139-9bb7-4127-80fe-a2374c0c967b",
+    "data": [
+      {
+        "text": "Inscribir",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538221530
+  },
+  {
+    "id": "b2e45dac-8983-447b-a06e-5f72079520f7",
+    "data": [
+      {
+        "text": "Solicitud ",
+        "userDefined": false
+      },
+      {
+        "text": "empresa",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538215442
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "id": "ea548372-e8c9-4037-a656-bd81b5dbac92",
+  "name": "Listar",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538215649,
+  "fallbackIntent": false,
+  "events": []
+}

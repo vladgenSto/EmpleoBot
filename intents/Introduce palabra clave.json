@@ -1,0 +1,43 @@
+{
+  "id": "8455aa4d-8ef3-474c-b58b-321502515bcc",
+  "name": "Introduce palabra clave",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "def5ad06-1dc8-4efd-b546-53c02e9dda8a",
+          "dataType": "@sys.time",
+          "name": "time",
+          "value": "$time",
+          "isList": false
+        },
+        {
+          "id": "43c2fda2-de05-4821-a2c6-a8c7aeec5133",
+          "dataType": "@PalabrasClave",
+          "name": "PalabrasClave",
+          "value": "$PalabrasClave",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": "Indícame la palabra que quieres usar como criterio de búsqueda"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538239295,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -1,0 +1,37 @@
+{
+  "id": "c9f47302-8898-4572-a48c-4f3b993cf49a",
+  "name": "Oferas Palabras Clave",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "f59e7787-a092-4845-a854-206fec128081",
+          "required": false,
+          "dataType": "@PalabrasClave",
+          "name": "PalabrasClave",
+          "value": "$PalabrasClave",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "lastUpdate": 1538237818,
+  "fallbackIntent": false,
+  "events": []
+}

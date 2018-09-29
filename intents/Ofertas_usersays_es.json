@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ce24740c-793e-4b55-96df-d62cac016a61",
+    "data": [
+      {
+        "text": "/ofertas",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538242449
+  },
+  {
+    "id": "8dd21f06-2954-460d-8bce-2e447de18da7",
+    "data": [
+      {
+        "text": "Menu ofertas",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538232626
+  }
+]

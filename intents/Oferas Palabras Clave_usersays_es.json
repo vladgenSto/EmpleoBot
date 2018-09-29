@@ -1,0 +1,16 @@
+[
+  {
+    "id": "73aa3b5b-61e8-47f4-84c2-1f628004f760",
+    "data": [
+      {
+        "text": "clave",
+        "alias": "PalabrasClave",
+        "meta": "@PalabrasClave",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1538229621
+  }
+]

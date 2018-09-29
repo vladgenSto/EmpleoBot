@@ -1,0 +1,28 @@
+{
+  "id": "627d4941-9826-4fd1-bff7-2174d1b1b6c1",
+  "name": "Realizar Solicitud Usuario",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538215484,
+  "fallbackIntent": false,
+  "events": []
+}
