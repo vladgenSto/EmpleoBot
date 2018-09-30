@@ -15,13 +15,21 @@
           "name": "geo-city",
           "value": "$geo-city",
           "isList": false
+        },
+        {
+          "id": "2d2ccdc0-2473-4d66-8d2f-52e8263ef532",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "description",
+          "value": "$description",
+          "isList": false
         }
       ],
       "messages": [
         {
           "type": 0,
           "lang": "es",
-          "speech": "Inscrito"
+          "speech": []
         }
       ],
       "defaultResponsePlatforms": {},
@@ -31,7 +39,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1538221530,
+  "lastUpdate": 1538260572,
   "fallbackIntent": false,
   "events": []
 }

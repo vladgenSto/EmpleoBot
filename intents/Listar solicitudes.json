@@ -1,0 +1,28 @@
+{
+  "id": "c38b12f7-8bd4-49b2-a08b-de6149c18fbd",
+  "name": "Listar solicitudes",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "es",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1538264478,
+  "fallbackIntent": false,
+  "events": []
+}

@@ -72,6 +72,10 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                      [{
                          "text": "🔍Ofertas",
                          "callback_data": "Menu ofertas"
+                     },
+                     {
+                         "text": "🔍Solicitudes",
+                         "callback_data": "Listar solicitudes"
                      }
                      ]]
                  }
@@ -84,7 +88,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
        return response.json({
            'payload':{
                'telegram':{
-                   'text':'Opciones para listar las ofertas:\n-Todas las ofertas: lista todas las ofertas publicadas.\nOfertas empresa: Lista las ofertas de una empresa en concreto.\nOfertas por palabra clave: Lista las ofertas por ...',
+                   'text':'Opciones para listar las ofertas:\n-Todas las ofertas: lista todas las ofertas publicadas.\nOfertas empresa: Lista las ofertas de una empresa en concreto.\nOfertas por palabra clave: Lista las ofertas por una o varias palabras clave',
                    'reply_markup':{
                        "inline_keyboard": [[{
                          "text": "🏢Todas",
@@ -109,6 +113,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
        });
    }
    function botonesEmpresas(agent){
+       agent.add('Elige una empresa');
        return firebase.database().ref('Empresas').once('value').then(function(snapshot) {
             snapshot.forEach(function(data){
                 var name = data.val().Nombre;
@@ -137,7 +142,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                     'title': emp,
                     'text': des,
                     'buttonText': '😋Me interesa',
-                    'buttonUrl': 'Inscribir '+des
+                    'buttonUrl': 'Inscribir'
                 }));    
                 }
                 
@@ -160,7 +165,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                     'title': emp,
                     'text': des,
                     'buttonText': '😋Me interesa',
-                    'buttonUrl': 'Inscribir '+des
+                    'buttonUrl': 'Inscribir'
                 }));    
                 }
                 
@@ -201,7 +206,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                     'title': emp,
                     'text': des,
                     'buttonText': '😋Me interesa',
-                    'buttonUrl': 'Inscribir '+des
+                    'buttonUrl': 'Inscribir'
                 }));
                  
             });
@@ -245,197 +250,38 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
        
        
    }
- //------------------------------------------------------------------------------------
- 
- 
-   function organizadores(agent){
-       agent.add('Buscando en la base de datos...');
-       return firebase.database().ref('organizadores').once('value').then(function(snapshot){
+   
+   function inscribirse(agent){
+       var username = 'Albert Jimenez';
+       var number = '627 345 198';
+       var email = 'albert_jimenez@gmail.com';
+       var skills = 'Java, Python, NodeJS, HTML, CSS, PHP, Django';
+       var offerDescription = 'Se busca programador de Aplicaciones Android en Kotlin.';
+       firebase.database().ref('SolicitudEmpresa/se01').set({
+           'Interesado': username,
+           'Telefono': number,
+           'Correo': email,
+           'Habilidades': skills,
+           'OfertaSolicitada': offerDescription
+       });
+       agent.add('Solicitud enviada');
+   }
+   
+   function listarSolicitudes(agent){
+       agent.add('Actualmente tienes estas solicitudes:');
+       return firebase.database().ref('SolicitudEmpresa').once('value').then(function(snapshot){
            snapshot.forEach(function(data){
-               var name = data.val().name;
-               var img = data.val().img;
-               var url = data.val().url;
-               agent.add(new Card({
-    				title: name,
-    				text: url,
-    				imageUrl: img
-			    }));
+               var name = data.val().Interesado;
+               var email = data.val().Correo;
+               var tel = data.val().Telefono;
+               var habilidades = data.val().Habilidades;
+               var oferta= data.val().OfertaSolicitada;
+               agent.add(name+'\nContacto:\nTeléfono: '+tel+' e-mail: '+email+'\nHabilidades: '+habilidades+'\nOferta solicitada: '+oferta);
            });
+           
        });
    }
-   
-   function retos(agent) {
-       agent.add('Estos son los retos de este año');
-       return firebase.database().ref('retos').once('value').then(function(snapshot){
-           snapshot.forEach(function(reto){
-               var name = reto.val().name;
-               var img = reto.val().img;
-               agent.add(new Card({
-                'title':name,
-                'imageUrl':img
-               }));
-               });
-          
-       });
-   }
-   
-   function eventos(agent){
-       return response.json({
-           'payload':{
-            'telegram':{
-                'text':'Bienvenido al Bot de Hackathon.\n Puedes preguntarme por la siguiente información:\n - \*Listar:\* muestra un menu para elegir que quiere listar el usuario.\n - \*Registro:\* solicita los datos para inscribirse en el evento.\n - \*Info evento:\* muestra un menu para ver los detalles del evento.',
-                'reply_markup':{
-                    'inline_keyboard':[[
-                        {
-                            'text': 'Todos los eventos',
-                            'callback_data': 'todos los eventos'
-                        }],
-                        [
-                        {
-                            'text': 'Elegir dia',
-                            'callback_data': 'elegir dia'
-                        }
-                        ]]
-                }
-            }
-        }
-       })
-   }
-   
-   function todos_eventos(agent){
-       agent.add('Buscando en la base de datos...');
-       return firebase.database().ref('horarios').once('value').then(function(snapshot){
-           snapshot.forEach(function(day){
-               var dia = day.key;
-               day.forEach(function(event){
-                   var hora = event.val().hora;
-                   var concepto = event.val().concepto;
-                   var lugar = event.val().lugar;
-                   agent.add(new Card({
-                       title: concepto,
-                       text: 'El '+dia+' a las '+hora+' en '+lugar
-                   }));
-               });
-           });
-       });
-   }
-   
-   function elegir_dia(agent) {
-       return response.json({
-           'payload':{
-            'telegram':{
-                'text':'Escoge día:',
-                'reply_markup':{
-                    'inline_keyboard':[[
-                        {
-                            'text': 'Viernes',
-                            'callback_data': 'viernes'
-                        }],
-                        [
-                        {
-                            'text': 'Sábado',
-                            'callback_data': 'sabado'
-                        }],
-                        [{
-                            'text': 'Domingo',
-                            'callback_data': 'domingo'
-                        }]
-                        ]
-                }
-            }
-        }
-       })
-   }
-   
-   function eventosDia(agent){
-       agent.add('Buscando en la base de datos');
-       var dia = agent.parameters['day'];
-       return firebase.database().ref('horarios/' + dia).once('value').then(function(snapshot){
-           snapshot.forEach(function(event){
-               var hora = event.val().hora;
-                   var concepto = event.val().concepto;
-                   var lugar = event.val().lugar;
-                   agent.add(new Card({
-                       title: concepto,
-                       text: 'A las '+hora+' en '+lugar
-                   }));
-           });
-       });
-   }
-   
-   function registro(agent) {
-       agent.add(`Elige la categoria en la que quieres participar.`); 
-       agent.add(new Suggestion('Infantil'));
-       agent.add(new Suggestion('Adulto'));
-       /*var nombre = agent.getContext('registro-followup')['parameters']['given-name'];
-       var correo = agent.parameters['email'];
-       agent.add('Gracias por tus datos ' + nombre + ' con correo ' + correo);
-       firebase.database().ref('users/' + nombre).set({
-           username: nombre,
-           email: correo
-       });
-       agent.add('Hecho!');*/
-   }
-   
-   function info(agent) {
-       return response.json({
-           "payload": {
-             "telegram": {
-                 "text": "Hackathon es un evento para programadores. Puedes averiguar las siguientes cosas del evento:\n - \*Localización:\* muestra la ubicación del evento.\n - \*Fecha:\* muestra la fecha del evento.\n - \*Página:\* enlace a la página de Hackathon.",
-                 "reply_markup": {
-                     "inline_keyboard": [[{
-                         "text": "Localización",
-                         "callback_data": "ubicacion"
-                     },
-                     {
-                         "text": "Fecha",
-                         "callback_data": "fecha"
-                     }
-                     ],
-                     [{
-                         "text": "Página",
-                         "callback_data": "pagina"
-                     }
-                     ]]
-                 }
-             }
-         }
-       })
-   }
-   
-   function ubicacion(agent){
-       var options = { 
-            method: 'GET',
-            url: 'https://maps.googleapis.com/maps/api/geocode/json',
-            qs: { 
-                address: 'Pabellón polideportivo, Camino de la Enramada, 12071 Castellón de la Plana, España',
-                key: 'AIzaSyBLrP-J3_TpICAzBZjlgGGIn24gGV8qURM' // Need to get API Key From Google
-              },
-            };
-        
- 
-            request(options, function (error, response, body) {
-              if (error) throw new Error(error);
-              return response.json({
-                   'fulfillmentMessages':body
-               });
-            });
-       
-   }
-
-
-  // // Uncomment and edit to make your own Google Assistant intent handler
-  // // uncomment `intentMap.set('your intent name here', googleAssistantHandler);`
-  // // below to get this function to be run when a Dialogflow intent is matched
-  // function googleAssistantHandler(agent) {
-  //   let conv = agent.conv(); // Get Actions on Google library conv instance
-  //   conv.ask('Hello from the Actions on Google client library!') // Use Actions on Google library
-  //   agent.add(conv); // Add Actions on Google library responses to your agent's response
-  // }
-  // // See https://github.com/dialogflow/dialogflow-fulfillment-nodejs/tree/master/samples/actions-on-google
-  // // for a complete Dialogflow fulfillment library Actions on Google client library v2 integration sample
-
-  // Run the proper function handler based on the matched Dialogflow intent name
+    
   let intentMap = new Map();
   intentMap.set('Presentacion', presentacion);
   intentMap.set('Listar', listar);
@@ -447,6 +293,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Ofertas Empresas',ofertasPorEmpresa);
   intentMap.set('Oferas Palabras Clave',ofertasPorPalabrasClave);
   intentMap.set('Crear oferta - getDescription', crearOferta);
+  intentMap.set('Realizar Solicitud Empresa', inscribirse);
+  intentMap.set('Listar solicitudes', listarSolicitudes);
   // intentMap.set('your intent name here', yourFunctionHandler);
   // intentMap.set('your intent name here', googleAssistantHandler);
   agent.handleRequest(intentMap);
