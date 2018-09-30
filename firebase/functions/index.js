@@ -31,7 +31,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return response.json({
         'payload':{
             'telegram':{
-                'text':'Bienvenido a EmpleoBot🤖.\n Esta hecho para ayudar a empresas a encontrar a empleados y también a personas que buscan trabajo.\n El bot ofrece las siguientes opciones: - 📝Listar: muestra un menu para elegir que quiere listar el usuario.\n - 🆕Registro usuario: solicita los datos personales de una persona para inscribirla en el sistema del bot.\n - 💼Crear oferta: Permite a las empresas crear ofertas en el bot.',
+                'text':'Bienvenido, soy el bot EmpleoBot🤖.\n Me han creado para ayudar a empresas a encontrar empleados. Otra de mis funciones es ayudar a personas buscar ofertas de trabajo.\n Te puedo ofrecer las siguientes opciones:\n - 📝Listar: muestra un menu para elegir que quiere listar el usuario.\n - 🆕Registro usuario: solicito los datos personales de una persona para inscribirla en mi sistema.\n - 💼Crear oferta: Permite a las empresas crear ofertas en mi sistema.',
                 'reply_markup':{
                     'inline_keyboard':[[
                         {
@@ -58,7 +58,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
      return response.json({
          "payload": {
              "telegram": {
-                 "text": "Elige que quieres listar:\n - 🏢Empresas: lista las empresas que hay en el sistema.\n - 👨👩Usuarios: lista los usuarios que hay registrados.\n - 🔍Ofertas: muestra todas las ofertas disponibles.",
+                 "text": "Elige que deseas listar:\n - 🏢Empresas: lista las empresas que hay en mi sistema.\n - 👨👩Usuarios: lista los usuarios que se han registrados.\n - 🔍Ofertas: muestra todas las ofertas disponibles.\n 🖌Solicitudes: muestra las solicitudes que tiene una empresa",
                  "reply_markup": {
                      "inline_keyboard": [[{
                          "text": "🏢Empresas",
@@ -74,7 +74,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                          "callback_data": "Menu ofertas"
                      },
                      {
-                         "text": "🔍Solicitudes",
+                         "text": "🖌Solicitudes",
                          "callback_data": "Listar solicitudes"
                      }
                      ]]
@@ -88,7 +88,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
        return response.json({
            'payload':{
                'telegram':{
-                   'text':'Opciones para listar las ofertas:\n-Todas las ofertas: lista todas las ofertas publicadas.\nOfertas empresa: Lista las ofertas de una empresa en concreto.\nOfertas por palabra clave: Lista las ofertas por una o varias palabras clave',
+                   'text':'Opciones para listar las ofertas:\n - 🏢Todas: lista todas las ofertas publicadas.\n - 📝Ofertas empresas: Lista las ofertas de una empresa en concreto.\n - 🔍Ofertas por palabras clave: Lista las ofertas por una o varias palabras clave',
                    'reply_markup':{
                        "inline_keyboard": [[{
                          "text": "🏢Todas",
@@ -97,7 +97,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                      
                      ],[
                          {
-                         "text": "👨👩Ofertas Empresas",
+                         "text": "📝Ofertas empresas",
                          "callback_data": "Botones empresas"
                      }
                          ],
@@ -113,7 +113,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
        });
    }
    function botonesEmpresas(agent){
-       agent.add('Elige una empresa');
+       agent.add('Escoge una empresa:');
        return firebase.database().ref('Empresas').once('value').then(function(snapshot) {
             snapshot.forEach(function(data){
                 var name = data.val().Nombre;
@@ -130,7 +130,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
    }
    
    function ofertasPorEmpresa(agent){
-       agent.add('Elige una empresa');
+       agent.add('Elige una empresa:');
       var empresa = agent.parameters['Empresa'];
       
        return firebase.database().ref('Ofertas').once('value').then(function(snapshot) {
@@ -153,6 +153,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
    }
    
    function ofertasPorPalabrasClave(agent){
+       agent.add('Ofertas que he encontrado:');
       var palabra = agent.parameters['PalabrasClave'];
       
        return firebase.database().ref('Ofertas').once('value').then(function(snapshot) {
@@ -182,7 +183,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
    
    // AÑADIR IMAGEN A CADA JURADO O PONER UN ENLACE A SU RED SOCAIL...
    function empresas(agent){
-       agent.add('Estas son las empresas:');
+       agent.add('Estas son las empresas que hay en el sistema:');
        return firebase.database().ref('Empresas').once('value').then(function(snapshot) {
             snapshot.forEach(function(data){
                 var name = data.val().Nombre;
@@ -197,7 +198,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         });
    }
    function todasOfertas(agent){
-       agent.add('Estas son las ofertas:');
+       agent.add('Estas son las ofertas que hay en mi base de datos:');
        return firebase.database().ref('Ofertas').once('value').then(function(snapshot) {
             snapshot.forEach(function(data){
                 var emp = data.val().Empresa;
@@ -214,7 +215,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         });
    }
    function todosUsuarios(agent){
-       agent.add('Estas son las usuarios:');
+       agent.add('Estos son todos los usuarios que se han registrado en mi sistema:');
        
        return firebase.database().ref('Usuarios').once('value').then(function(snapshot) {
             snapshot.forEach(function(data){
@@ -223,7 +224,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                 
                 agent.add(new Card({
                     'title':name,
-                    'text':'Hablididades: '+skills
+                    'text':'💪Hablididades: '+skills
                 }));
             });
             
@@ -243,7 +244,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
            'Descripcion': descripcion,
            'Palabras_clave': palabras_clave
             });
-            agent.add('Tu oferta se ha creado con exito!');
+            agent.add('✅Tu oferta se ha creado con exito!');
             
             
        });
@@ -264,7 +265,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
            'Habilidades': skills,
            'OfertaSolicitada': offerDescription
        });
-       agent.add('Solicitud enviada');
+       agent.add('✅Solicitud enviada');
    }
    
    function listarSolicitudes(agent){
@@ -276,7 +277,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
                var tel = data.val().Telefono;
                var habilidades = data.val().Habilidades;
                var oferta= data.val().OfertaSolicitada;
-               agent.add(name+'\nContacto:\nTeléfono: '+tel+' e-mail: '+email+'\nHabilidades: '+habilidades+'\nOferta solicitada: '+oferta);
+               agent.add(name+'\n - 👤Contacto:\n - 📞Teléfono: '+tel+'\n - 📫E-mail: '+email+'\n - 💪Habilidades: '+habilidades+'\n - 📝Oferta solicitada: '+oferta);
            });
            
        });

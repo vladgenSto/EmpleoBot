@@ -12,7 +12,7 @@
         {
           "type": 0,
           "lang": "es",
-          "speech": "/start - Inicia el bot\n/help - Menú de ayuda\n/oferta - Menú de ofertas"
+          "speech": "/start - Inicia el bot\n/help - Menú de ayuda\n/oferta - Menú de ofertas\n/solicitudes - Menú de solicitudes\n/empresas - Menú de empresas\n/usuarios - Menú de usuarios"
         }
       ],
       "defaultResponsePlatforms": {},
@@ -22,7 +22,7 @@
   "priority": 500000,
   "webhookUsed": false,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1538242651,
+  "lastUpdate": 1538268318,
   "fallbackIntent": false,
   "events": []
 }

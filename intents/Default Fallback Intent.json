@@ -14,11 +14,9 @@
           "type": 0,
           "lang": "es",
           "speech": [
-            "Ups, no he entendido a que te refieres.",
-            "¿Podrías repetirlo, por favor?",
-            "¿Disculpa?",
-            "¿Decías?",
-            "¿Cómo?"
+            "No entiendo lo que me quieres decir. Te sugiero que utilices /ayuda",
+            "No se que quieres decir. Te sugiero que utilices /ayuda",
+            "No se a qué te refieres. Te sugiero que utilices /ayuda"
           ]
         }
       ],
@@ -29,7 +27,7 @@
   "priority": 500000,
   "webhookUsed": false,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1538137754,
+  "lastUpdate": 1538268233,
   "fallbackIntent": true,
   "events": []
 }
